@@ -9,8 +9,9 @@ MarkovChains::MarkovChains(std::map<prefix, suffix> table) {
     if (IsCorrectTable(table)) {
         wordsInPrefix = table.begin()->first.size();
         this->table = table;
-    } else
+    } else {
         throw std::invalid_argument("Incorrect table");
+    }
 }
 
 bool MarkovChains::IsCorrectTable(const std::map<prefix, suffix> table) {

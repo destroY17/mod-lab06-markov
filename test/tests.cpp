@@ -20,10 +20,10 @@ TEST(markovTest, formationPairPrefixSuffix) {
 
     auto generator = MarkovChains(wordsInPrefix, words);
     auto table = generator.GetTable();
-    
+
     prefix prefix;
     prefix.push_back(words[0]);
-    
+
     for (int i = 1; i < words.size() - 1; i++) {
         prefix.push_back(words[i]);
 

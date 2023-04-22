@@ -9,8 +9,7 @@ MarkovChains::MarkovChains(std::map<prefix, suffix> table) {
     if (IsCorrectTable(table)) {
         wordsInPrefix = table.begin()->first.size();
         this->table = table;
-    }
-    else
+    } else
         throw std::invalid_argument("Incorrect table");
 }
 
@@ -26,13 +25,13 @@ bool MarkovChains::IsCorrectTable(const std::map<prefix, suffix> table) {
     return true;
 }
 
-MarkovChains::MarkovChains(int wordsInPrefix, std::vector<std::string> words) {
-    this->wordsInPrefix = wordsInPrefix;
+MarkovChains::MarkovChains(int prefixSize, std::vector<std::string> words) {
+    this->wordsInPrefix = prefixSize;
     InitTable(words);
 }
 
-MarkovChains::MarkovChains(int wordsInPrefix, std::string dataSetFilePath) {
-    this->wordsInPrefix = wordsInPrefix;
+MarkovChains::MarkovChains(int prefixSize, std::string dataSetFilePath) {
+    this->wordsInPrefix = prefixSize;
     InitTable(GetWords(dataSetFilePath));
 }
 

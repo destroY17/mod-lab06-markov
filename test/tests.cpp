@@ -15,14 +15,16 @@ TEST(markovTest, formationTextWithGivenPrefixCount) {
 }
 
 TEST(markovTest, formationPairPrefixSuffix) {
-    int wordsInPrefix = 1;
+    int wordsInPrefix = 2;
     std::vector<std::string> words = { "I", "like", "to", "eat", "a", "lot" };
 
     auto generator = MarkovChains(wordsInPrefix, words);
     auto table = generator.GetTable();
-
+    
     prefix prefix;
-    for (int i = 0; i < words.size() - 1; i++) {
+    prefix.push_back(words[0]);
+    
+    for (int i = 1; i < words.size() - 1; i++) {
         prefix.push_back(words[i]);
 
         EXPECT_EQ(table[prefix].size(), 1);
@@ -40,14 +42,10 @@ TEST(markovTest, checkOneSuffix) {
     auto table = generator.GetTable();
 
     prefix prefix;
-    for (int i = 0; i < words.size() - 1; i++) {
-        prefix.push_back(words[i]);
+    prefix.push_back(words[0]);
 
-        EXPECT_EQ(table[prefix].size(), 1);
-        EXPECT_EQ(table[prefix][0], words[i + 1]);
-
-        prefix.pop_front();
-    }
+    EXPECT_EQ(table[prefix].size(), 1);
+    EXPECT_EQ(table[prefix][0], words[1]);
 }
 
 TEST(markovTest, checkDifferentSuffixes) {

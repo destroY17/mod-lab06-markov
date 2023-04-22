@@ -20,7 +20,7 @@ class MarkovChains {
      int wordsInPrefix;
      std::map<prefix, suffix> table;
 
- private: 
+ private:
      void InitTable(const std::vector<std::string> words);
      std::vector<std::string> GetWords(const std::string filePath);
      bool IsCorrectTable(const std::map<prefix, suffix> table);
